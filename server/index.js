@@ -37,8 +37,8 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(socket){
     console.log("Usuario desconectado de los sockets");
     if (terminalSocket == socket){
-      terminalSocket = null;
-      terminalConnectedName = null;
+      terminalSocket = -1;
+      terminalConnectedName = -1;
     }
 
    });
