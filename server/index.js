@@ -34,7 +34,7 @@ io.on('connection', function(socket){
   //   io.sockets.emit('messagesFromServer', messagesFromServer);
   // })
 
-  socket.on('disconnect', function(socket){
+  socket.on('disconnect', function(){
     console.log("Usuario desconectado de los sockets");
     if (terminalSocket == socket){
       terminalSocket = -1;
