@@ -1,5 +1,5 @@
 let socketId = "webAppPi";
-var socket = io.connect('http://localhost:8080',{'forceNew':true});
+var socket = io.connect('http://192.68.1.99:8080',{'forceNew':true});
 
 //recibe mensaje del server
 socket.on('messagesFromServer', function(data){
@@ -36,6 +36,7 @@ function render(data){
 
 //send message to server
 function abrirPuerta(){
+  console.log("Cliente provisional manda abrir puerta");
 
   // var payload = {
   //   action : "abrirPuerta",
