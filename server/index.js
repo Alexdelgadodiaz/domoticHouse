@@ -72,7 +72,7 @@ function handleEntryConnection(socket){
         break;
       case "doorOpened":
           console.log("Server: Terminal openeed the door ");
-          clientSocket.emit("messagesFromServerToClient", "doorOpened");
+          clientSocket.emit("messagesFromServerToClient", messagesFromServer);
         break;
       default:
 
