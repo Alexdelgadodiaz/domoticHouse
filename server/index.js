@@ -34,8 +34,13 @@ io.on('connection', function(socket){
   //   io.sockets.emit('messagesFromServer', messagesFromServer);
   // })
 
-  socket.on('disconnect', function(){
+  socket.on('disconnect', function(socket){
     console.log("Usuario desconectado de los sockets");
+    if (terminalSocket == socket){
+      terminalSocket = null;
+      terminalConnectedName = null;
+    }
+
    });
 
 });
