@@ -1,4 +1,6 @@
-let terminalName = "terminalSonato";
+let socketId =      "webAppPi";
+let terminalName =  "terminalSonatoPi";
+let serverId =      "serverPi";
 
 var express = require('express');
 var app = express();
@@ -67,7 +69,7 @@ function handleEntryConnection(socket){
 
 function abrirPuerta(){
   if (terminalConnectedName == terminalName) {
-    socket.emit('messagesFromServerToTerminal', messagesFromServer);
+    socket.emit('messagesFromServerToTerminal', serverId, "abrirPuerta");
   }else{
     console.log("Cannot open door, terminal not connected");
   }
