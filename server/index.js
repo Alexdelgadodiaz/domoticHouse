@@ -47,7 +47,7 @@ function handleEntryConnection(socket){
     // socketName[socket.id] = socketId;
     switch (data) {
       case "abrirPuerta":
-          abrirPuerta();
+          abrirPuerta(socket);
         break;
       default:
          console.log("messageFromClient not valid");
@@ -67,7 +67,7 @@ function handleEntryConnection(socket){
 
 }
 
-function abrirPuerta(){
+function abrirPuerta(socket){
   if (terminalConnectedName == terminalName) {
     socket.emit('messagesFromServerToTerminal', serverId, "abrirPuerta");
   }else{
