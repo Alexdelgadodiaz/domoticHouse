@@ -8,6 +8,7 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
 var terminalConnectedName;
+var terminalSocket;
 
 var messagesFromServer = [{
   id:1,
@@ -44,11 +45,11 @@ io.sockets.on('connection', function(socket){
 
 function handleEntryConnection(socket){
   socket.on("messageFromClientToServer", function(socketId, data, callback){
-    console.log("Server: message recived from Client");
+    console.log("Server: message recived from Client" + data);
     // socketName[socket.id] = socketId;
     switch (data) {
       case "abrirPuerta":
-          abrirPuerta(socket);
+          abrirPuerta();
         break;
       default:
          console.log("messageFromClient not valid");
@@ -57,6 +58,7 @@ function handleEntryConnection(socket){
 
   socket.on("messageFromTerminalToServer", function(socketId, data, callback){
     terminalConnectedName = socketId;
+    terminalSocket = socket;
     switch (data) {
       case "connection":
           console.log("Server: Terminal connected with name: " + socketId);
@@ -68,9 +70,9 @@ function handleEntryConnection(socket){
 
 }
 
-function abrirPuerta(socket){
+function abrirPuerta(){
   if (terminalConnectedName == terminalName) {
-    socket.emit('messagesFromServerToTerminal', serverId, "abrirPuerta");
+    terminalSocket.emit('messagesFromServerToTerminal', serverId, "abrirPuerta");
   }else{
     console.log("Cannot open door, terminal not connected");
   }
