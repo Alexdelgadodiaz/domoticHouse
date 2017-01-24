@@ -12,12 +12,11 @@ function render(data){
 
   var html = data.map(function(elem, index){
     return(`<div>
-                  <strong>${elem.author}</strong>:
-                  <em>${elem.text}</em>
+                  <strong>${data}</strong>:
                 </div>`);
   }).join(" ");
 
-  document.getElementById('messagesFromServer').innerHTML = html;
+  document.getElementById('messagesFromServerToClient').innerHTML = html;
 
 }
 

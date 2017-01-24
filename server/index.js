@@ -9,6 +9,7 @@ var io = require('socket.io')(server);
 
 var terminalConnectedName;
 var terminalSocket;
+var clientSocket;
 
 var messagesFromServer = [{
   id:1,
@@ -45,6 +46,7 @@ io.sockets.on('connection', function(socket){
 
 function handleEntryConnection(socket){
   socket.on("messageFromClientToServer", function(socketId, data, callback){
+    clientSocket = socket;
     console.log("Server: message recived from Client" + data);
     // socketName[socket.id] = socketId;
     switch (data) {
@@ -62,6 +64,10 @@ function handleEntryConnection(socket){
     switch (data) {
       case "connection":
           console.log("Server: Terminal connected with name: " + socketId);
+        break;
+      case "doorOpened":
+          console.log("Server: Terminal openeed the door ");
+          clientSocket.emit("messagesFromServerToClient", "doorOpened");
         break;
       default:
 
