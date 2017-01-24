@@ -2,7 +2,7 @@ let socketId = "webAppPi";
 var socket = io.connect('http://192.168.1.99:8080',{'forceNew':true});
 
 //recibe mensaje del server
-socket.on('messagesFromServer', function(data){
+socket.on('messagesFromServerToClient', function(data){
   console.log(data);
   render(data);
 });
@@ -36,13 +36,13 @@ function render(data){
 
 //send message to server
 function abrirPuerta(){
-  console.log("Cliente provisional manda abrir puerta");
+  console.log("Cliente provisional:  message sent to Server");
 
   // var payload = {
   //   action : "abrirPuerta",
   // };
   // console.log(payload);
-  socket.emit('messageFromClient', socketId, "abrirPuerta");
+  socket.emit('messageFromClientToServer', socketId, "abrirPuerta");
   return false;
 
 }

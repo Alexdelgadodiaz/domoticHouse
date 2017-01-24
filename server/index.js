@@ -43,7 +43,8 @@ io.sockets.on('connection', function(socket){
 });
 
 function handleEntryConnection(socket){
-  socket.on("messageFromClient", function(socketId, data, callback){
+  socket.on("messageFromClientToServer", function(socketId, data, callback){
+    console.log("Server: message recived from Client");
     // socketName[socket.id] = socketId;
     switch (data) {
       case "abrirPuerta":
@@ -54,11 +55,11 @@ function handleEntryConnection(socket){
     }
   });
 
-  socket.on("messageFromTerminal", function(socketId, data, callback){
+  socket.on("messageFromTerminalToServer", function(socketId, data, callback){
     terminalConnectedName = socketId;
     switch (data) {
       case "connection":
-          console.log("Terminal connected with name: " + socketId);
+          console.log("Server: Terminal connected with name: " + socketId);
         break;
       default:
 
