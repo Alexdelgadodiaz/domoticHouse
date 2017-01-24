@@ -12,7 +12,8 @@ function render(data){
 
   var html = data.map(function(elem, index){
     return(`<div>
-                  <strong>elem</strong>:
+                  <strong>${elem.author}</strong>:
+                  <em>${elem.text}</em>
                 </div>`);
   }).join(" ");
 

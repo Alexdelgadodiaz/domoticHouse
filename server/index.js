@@ -13,8 +13,8 @@ var clientSocket;
 
 var messagesFromServer = [{
   id:1,
-  text: "Bienvenido a la app",
-  author:"Admin"
+  text: "Puerta abierta",
+  author:"Alex"
 }]
 
 app.use(express.static('public'));
