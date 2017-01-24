@@ -12,7 +12,7 @@ function render(data){
 
   var html = data.map(function(elem, index){
     return(`<div>
-                  <strong>${data}</strong>:
+                  <strong>${elem}</strong>:
                 </div>`);
   }).join(" ");
 
