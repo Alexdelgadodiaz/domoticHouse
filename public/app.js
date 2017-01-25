@@ -1,5 +1,5 @@
 let socketId = "webAppPi";
-var socket = io.connect('http://192.168.1.99:8080',{'forceNew':true});
+var socket = io.connect('http://192.168.1.97:8080',{'forceNew':true});
 
 //recibe mensaje del server
 socket.on('messagesFromServerToClient', function(data){
